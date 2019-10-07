@@ -67,6 +67,15 @@ class TestCredentials(unittest.TestCase):
         method that returns a list of all credentials
         """
         self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
+    def test_find_by_name_credentials(self):
+        self.new_account.save_credentials()
+        test_credentials = Credentials("instagram","bchizi","lehann")
+        test_credentials.save_credentials
+
+        found_credentials = Credentials.find_by_name_credential("bchizi") 
+
+        self.assertEqual(found_credentials.social_account,test_credentials.social_account)
+        
 
 
     

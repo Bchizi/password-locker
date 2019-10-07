@@ -33,8 +33,13 @@ class Credentials:
         '''
         Credentials.credentials_list.remove(self)
 
-    def find_name_credential(self):
-        pass
+    @classmethod
+    def find_by_name_credential(cls,username):
+
+        for credential in cls.credentials_list:
+            if credential.social_username == username:
+                return credential
+     
     @classmethod
     def display_credentials(cls):
         """
