@@ -27,11 +27,22 @@ class Credentials:
     def save_credentials(self):
         Credentials.credentials_list.append(self)
 
-    def delete_user(self):
+    def delete_credentials(self):
         ''' 
         delets the user
         '''
         Credentials.credentials_list.remove(self)
+
+    def find_name_credential(self):
+        pass
+    @classmethod
+    def display_credentials(cls):
+        """
+        a method that returns the credentials list
+        """
+        return cls.credentials_list
+    def generate_password(self):
+        pass
 
     def __init__(self,social_account,social_username,social_password):
         self.social_account = social_account

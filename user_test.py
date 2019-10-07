@@ -46,9 +46,7 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_account.social_username,"bchizi")
         self.assertEqual(self.new_account.social_password,"lehann")
 
-    
-
-    def test_delete_user(self):
+    def test_delete_credentials(self):
         '''
         test_delete_contact to test if we can remove a contact from our contact list
         '''
@@ -56,9 +54,23 @@ class TestCredentials(unittest.TestCase):
         test_user = User("Test", "user", "0712345678", 
                          "test@user.com")  # new contact
         test_user.save_user()
-        self.new_account.delete_user()  # deleting a user object
+        self.new_account.delete_credentials()  # deleting a user object
         self.assertEqual(len(User.user_list), 1)
         
+    def test_save_credentials(self):
+
+        self.new_account.save_credentials()
+        self.assertEqual(len(Credentials.credentials_list),1)
+
+    def test_display_credentials(self): 
+        """
+        method that returns a list of all credentials
+        """
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
+
+
+    
+
 
 
 if __name__ == '__main__':
