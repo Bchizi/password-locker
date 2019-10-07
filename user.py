@@ -1,3 +1,5 @@
+import string , random
+
 class User:
  
  
@@ -46,10 +48,17 @@ class Credentials:
         a method that returns the credentials list
         """
         return cls.credentials_list
-    def generate_password(self):
-        pass
+    @classmethod    
+    def generate_password(cls,stringLength=8):
+        password = string.ascii_lowercase
+        return ''.join(random.choice(password) for i in range(stringLength)) 
+
+
+        
 
     def __init__(self,social_account,social_username,social_password):
         self.social_account = social_account
         self.social_username = social_username
         self.social_password = social_password
+
+    
