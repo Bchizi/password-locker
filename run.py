@@ -39,6 +39,9 @@ def display_credentials():
     Function that returns all the saved contacts
     '''
     return Credentials.display_credentials()
+def authenticate_login(username,password):
+   return User.login_authentication(username,password)
+
 def main():
 
     print("Hello Welcome to your user/credential_list. What is your name?")
@@ -47,7 +50,7 @@ def main():
     print('\n')
 
     while True:
-                    print("Use these short codes : ca- create a new user account, li -login, dc - display credentials, fc -find a credential, ex -exit the user list ")
+                    print("Use these short codes : ca- create a new user account, li- login, dc - display credentials, fc -find a credential, ex -exit the user list ")
                     short_code = input().lower()
 
                     if short_code == 'ca':
@@ -66,4 +69,45 @@ def main():
                         print("Password.....")
                         paswd = input()
 
-                        save_user(create_user(f_name,s_name,U_name,paswd))#
+                        save_user(create_user(f_name,s_name,U_name,paswd))# create and save new user
+                        print('\n')
+                        print(f"New user{f_name} {s_name} created") 
+                        print('\n')
+
+                        print("login:username and password is requird")
+                        print('-'*10)
+                        print("your username.....")
+                        U_name = input()
+
+                        print("your password....")
+                        paswd = input()
+
+                        loggedin = authenticate_login(U_name,paswd)
+
+                        if loggedin:
+                            print ("Creat social account...") 
+                            print('-'*10)
+
+                            print("Social media name...")
+                            medianame = input()
+
+                            print("Social Username")
+                            S_username = input()
+
+                            print("socialuser password...")
+                            S_paswd = input()
+
+                            print("username")
+
+
+
+
+
+
+
+
+
+                        
+
+
+                    

@@ -76,6 +76,7 @@ class TestCredentials(unittest.TestCase):
         found_credentials = Credentials.find_by_name_credential("bchizi") 
 
         self.assertEqual(found_credentials.social_account,test_credentials.social_account)
+    
     def test_generate_password(self):
         test_credentials = Credentials("instagram","bchizi","lehann","lbchizi") 
         test_credentials.social_password = Credentials.generate_password() 
