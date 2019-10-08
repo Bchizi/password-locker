@@ -87,7 +87,7 @@ def main():
             # create and save new user
             save_user(create_user(f_name, s_name, U_name, paswd))
             print('\n')
-            print(f"New user{f_name} {s_name} created")
+            print(f"New user {f_name} {s_name} created")
             print('\n')
 
             print("login:username and password is requird")
@@ -102,54 +102,69 @@ def main():
             loggedin = authenticate_login(U_name, paswd)
 
             if loggedin:
-
-                print("Use these short codes : cc- create credentials, dc - display credentials, fc -find a credential,del-delete credentials ex -exit the credentials list ")
-                short_code = input().lower()
-
-                if short_code == 'cc':
-
-                    print("Creat social account...")
-                    print('-'*10)
-
-                    print("Social media name...")
-                    medianame = input()
-
-                    print("Social Username")
-                    S_username = input()
+                print('-'*10)
+                print(f'Welcome {loggedin.username}')
+                print('-'*10)
+                print('Choose the options below to navigate through the app:')
+                print('-'*10)
 
                 while True:
-                    print("use 'gen' to generate pasword or use 'ent'to enter your own prefferd password")
-                    passopt= input().lower()
-                    if passopt == 'gen':
-                        S_passwd = generate_password()
-                        break
-                    elif passopt == 'ent':
-                        print('Enter your password:')
-                        S_passwd = input()
-                        break
-                    else:
-                        print("WRONG!. please try again")
-                save_credentials(create_Credentials(medianame,S_username,S_passwd,loggedin.username))
-                print("_"*10)
-                print('\n')
-            
-            elif short_code == 'dc':
-                print("social media credentials available are:")
-                print("\n")
+                    print("Use these short codes : cc- create credentials, dc - display credentials,del-delete credentials ex -exit the credentials list ")
+                    short_code = input().lower()
 
-                count = 0
-                for Credential in display_credentials():
-                    count += 1
+                    if short_code == 'cc':
 
-                    print(f'They are {count}. Social Media: {Credential.social_media}, Username: {Credential.social_username}.')
-                
-                else:
-                    print("Sorry no credentials saved here!")
+                        print("Creat social account...")
+                        print('-'*10)
+
+                        print("Social media name...")
+                        medianame = input()
+
+                        print("Social Username")
+                        S_username = input()
+
+                        while True:
+                            print("use 'gen' to generate pasword or use 'ent'to enter your own prefferd password")
+                            passopt= input().lower()
+                            if passopt == 'gen':
+                                S_passwd = generate_password()
+                                break
+                            elif passopt == 'ent':
+                                print('Enter your password:')
+                                S_passwd = input()
+                                break
+                            else:
+                                print("WRONG!. please try again")
+                            
+                        save_credentials(create_Credentials(medianame,S_username,S_passwd,loggedin.username))
+                        print("_"*10)
+                        print('\n')
+                        print(f'Credentials for "{medianame}" with username "{S_username}" and password "{S_passwd}" has been created.')
             
-            elif short_code =="del":
-                print("name of the social media you want to delete!")
-                account = input()
-                if find_credentials(account):
-                    del_credentials(find_credentials(account))
-                    print('\n')
-                    print("credential has been deleted")
+                    elif short_code == 'dc':
+                        print('\n')
+                        if display_credentials(): 
+
+                            print("social media credentials available are:")
+                            print("\n")
+                    
+
+                            count = 0   
+                            for credential in display_credentials():
+                                if credential.username == loggedin.username:
+                                    count += 1
+                                    print(f'They are {count}. Social Media: {credential.social_account}, Username: {credential.username}.')
+                                    print('\n')
+                        else:
+                            print("Sorry no credentials saved here!")
+            
+                    elif short_code =="del":
+                        print("name of the social media you want to delete!")
+                        account = input()
+                        if find_credentials(account):
+                            del_credentials(find_credentials(account))
+                            print('\n')
+                            print("credential has been deleted")
+
+if __name__ == "__main__":
+    main()
