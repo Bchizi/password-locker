@@ -47,6 +47,11 @@ def display_credentials():
     '''
     return Credentials.display_credentials()
 
+def generate_password():
+    
+    return Credentials.generate_password()
+
+
 
 def authenticate_login(username, password):
     return User.login_authentication(username, password)
@@ -113,5 +118,7 @@ def main():
                     S_username = input()
 
                 while True:
-                    print("socialuser password...")
-                    S_paswd = input()
+                    print("generate pasword or Press enter to enter your password")
+                    S_paswd = input().lower()
+                    if S_paswd == 'gen':
+                                password = generate_password()
