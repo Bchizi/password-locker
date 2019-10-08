@@ -48,7 +48,7 @@ def display_credentials():
     return Credentials.display_credentials()
 
 def generate_password():
-    
+
     return Credentials.generate_password()
 
 
@@ -118,7 +118,15 @@ def main():
                     S_username = input()
 
                 while True:
-                    print("generate pasword or Press enter to enter your password")
-                    S_paswd = input().lower()
-                    if S_paswd == 'gen':
-                                password = generate_password()
+                    print("use 'gen' to generate pasword or use 'ent'to enter your own prefferd password")
+                    passopt= input().lower()
+                    if passopt == 'gen':
+                        S_passwd = generate_password()
+                        break
+                    elif passopt == 'ent':
+                        print('Enter your password:')
+                        S_passwd = input()
+                        break
+                    else:
+                        print("WRONG. please try again")
+
