@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.7
 from user import User, Credentials
-
+ 
 
 def create_user(fname, lname, username, password):
     '''
@@ -65,7 +65,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes : ca- create a new user account, li- login, dc - display credentials, fc -find a credential, ex -exit the user list ")
+        print("Use these short code : ca- create a new user account ")
         short_code = input().lower()
 
         if short_code == 'ca':
@@ -129,7 +129,7 @@ def main():
                         break
                     else:
                         print("WRONG!. please try again")
-                save_credentials(create_Credentials(medianame,S_username,S_passwd,User.username))
+                save_credentials(create_Credentials(medianame,S_username,S_passwd,loggedin.username))
                 print("_"*10)
                 print('\n')
             
@@ -145,5 +145,11 @@ def main():
                 
                 else:
                     print("Sorry no credentials saved here!")
-
-
+            
+            elif short_code =="del":
+                print("name of the social media you want to delete!")
+                account = input()
+                if find_credentials(account):
+                    del_credentials(find_credentials(account))
+                    print('\n')
+                    print("credential has been deleted")
