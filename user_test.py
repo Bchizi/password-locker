@@ -36,8 +36,9 @@ class TestUser(unittest.TestCase):
 class TestCredentials(unittest.TestCase):
 
     def setUp(self):
-       self.new_account = Credentials ("instagram","bchizi","lehann")
+       self.new_account = Credentials ("instagram","bchizi","lehann","lbchizi")
     
+
     def tearDown(self):
         Credentials.credentials_list=[]
 
@@ -69,14 +70,14 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
     def test_find_by_name_credentials(self):
         self.new_account.save_credentials()
-        test_credentials = Credentials("instagram","bchizi","lehann")
+        test_credentials = Credentials("instagram","bchizi","lehann","lbchizi")
         test_credentials.save_credentials
 
         found_credentials = Credentials.find_by_name_credential("bchizi") 
 
         self.assertEqual(found_credentials.social_account,test_credentials.social_account)
     def test_generate_password(self):
-        test_credentials = Credentials("instagram","bchizi","")
+        test_credentials = Credentials("instagram","bchizi","lehann","lbchizi") 
         test_credentials.social_password = Credentials.generate_password() 
 
 
