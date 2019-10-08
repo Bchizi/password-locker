@@ -103,7 +103,7 @@ def main():
 
             if loggedin:
 
-                print("Use these short codes : cc- create credentials, dc - display credentials, fc -find a credential, ex -exit the credentials list ")
+                print("Use these short codes : cc- create credentials, dc - display credentials, fc -find a credential,del-delete credentials ex -exit the credentials list ")
                 short_code = input().lower()
 
                 if short_code == 'cc':
@@ -128,5 +128,22 @@ def main():
                         S_passwd = input()
                         break
                     else:
-                        print("WRONG. please try again")
+                        print("WRONG!. please try again")
+                save_credentials(create_Credentials(medianame,S_username,S_passwd,User.username))
+                print("_"*10)
+                print('\n')
+            
+            elif short_code == 'dc':
+                print("social media credentials available are:")
+                print("\n")
+
+                count = 0
+                for Credential in display_credentials():
+                    count += 1
+
+                    print(f'They are {count}. Social Media: {Credential.social_media}, Username: {Credential.social_username}.')
+                
+                else:
+                    print("Sorry no credentials saved here!")
+
 

@@ -14,7 +14,7 @@ class User:
     @classmethod    
     def login_authentication(cls,username,password):
         for user in cls.user_list:
-            if user.username == username and user.password == password:
+            if user.username == username and user.password == password:     
                 return user  
 
 
